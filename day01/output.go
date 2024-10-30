@@ -1,1 +1,16 @@
-// this will be my go solution for advent of code 2023 day 1
+package main
+
+import (
+	"fmt"
+	"log"
+	"os"
+)
+
+func main() {
+	file, err := os.ReadFile("input.txt")
+	if err != nil {
+		log.Fatalln(err)
+	}
+
+	fmt.Println(file)
+}
