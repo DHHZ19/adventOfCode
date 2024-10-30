@@ -1,16 +1,17 @@
 package main
 
 import (
-	"fmt"
 	"log"
 	"os"
 )
 
 func main() {
-	file, err := os.ReadFile("input.txt")
+	// open file
+	f, err := os.Open("input.txt")
 	if err != nil {
-		log.Fatalln(err)
+		log.Fatal(err)
 	}
+	// remember to close the file at the end of the program
+	defer f.Close()
 
-	fmt.Println(file)
 }
