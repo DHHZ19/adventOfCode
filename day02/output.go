@@ -25,7 +25,6 @@ func main() {
 	arr := strings.Split(string(f), "\n")
 
 	for i := 0; i < len(arr); i++ {
-		fmt.Println(arr[i])
 		// get game id
 		tempGameId := strings.Split(arr[i], ":")
 		gameID := strings.Split(tempGameId[0], " ")[1]
@@ -36,13 +35,11 @@ func main() {
 		for j := 0; j < len(splitR); j++ {
 			trimmed := strings.TrimSpace(splitR[j])
 			gameActual := strings.Split(trimmed, " ")
-			fmt.Println(gameActual)
 			v, _ := strconv.Atoi(gameActual[0])
 			gID, _ := strconv.Atoi(gameID)
 			if gameActual[1] == "red" {
 				if v <= colorMap.red {
 					if j == len(splitR)-1 {
-						fmt.Println(gID)
 						slice = append(slice, gID)
 					}
 				} else {
@@ -51,7 +48,6 @@ func main() {
 			} else if gameActual[1] == "green" {
 				if v <= colorMap.green {
 					if j == len(splitR)-1 {
-						fmt.Println(gID)
 						slice = append(slice, gID)
 					}
 				} else {
@@ -60,7 +56,6 @@ func main() {
 			} else if gameActual[1] == "blue" {
 				if v <= colorMap.blue {
 					if j == len(splitR)-1 {
-						fmt.Println(gID)
 						slice = append(slice, gID)
 					}
 				} else {
@@ -73,6 +68,5 @@ func main() {
 	for _, num := range slice {
 		result += num
 	}
-
 	fmt.Println(result)
 }
