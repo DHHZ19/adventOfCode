@@ -5,6 +5,7 @@ const rl = readline.createInterface({
     input: fs.createReadStream("input.txt"),
     crlfDelay: Infinity,
 });
+
 let floor = 0
 rl.on("line", (line) => {
     for (let i = 0; i < line.length; i++) {
