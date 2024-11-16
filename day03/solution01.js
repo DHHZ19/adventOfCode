@@ -1,41 +1,30 @@
 import fs from 'fs';
 
 // north (^), south (v), east (>), or west (<)
-const hash = {0: true}
 let x = 0
-let deliveredHouses = 1
+let y = 0
+let hash = new Set()
 fs.readFile('./input.txt', 'utf8', (err, data) => {
-  let s = data.split("")
+  hash.add(`${x}${y}`)
 
-  s.forEach(x => {
-    switch(x){
-      case '^':
-        if (!hash[x++]){
-          deliveredHouses++;
-        }
-        break
-      case 'v':
-        if (!hash[x++]){
-          deliveredHouses++;
-        }
-        x--
-        break
-      case '>':
-        if (!hash[x++]){
-          deliveredHouses++;
-        }
-        x++
-        break
-      case '<':
-        if (!hash[x++]){
-          deliveredHouses++;
-        }
-        x--
-        break
-    }
+    data.split("").forEach( t => {
+      switch(t){
+        case '^':
+          y++
+          break
+        case 'v':
+          y--
+          break
+        case '>':
+          x++
+          break
+        case '<':
+          x--
+          break
+      }
+      hash.add(`${x}${y}`)
+    })
 
-   console.log(deliveredHouses)
-  })
-
+  console.log(hash.size)
 })
 
