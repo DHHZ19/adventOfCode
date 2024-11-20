@@ -22,7 +22,7 @@ const rl = readline.createInterface({
 //         arr[i][j] = 1
 //     }
 // }
-let grid = Array.from({ length: 1000 }, () => Array(1000).fill(0));
+let grid = new Array(1000).fill().map(() => Array(1000).fill(0))
 let res = 0;
 rl.on("line", (line) => {
 
