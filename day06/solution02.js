@@ -7,21 +7,7 @@ const rl = readline.createInterface({
   input: fs.createReadStream("input.txt"),
   crlfDelay: Infinity,
 });
-     // row, col
-// toggle 1,0 through 2,0
-// toggle 0,1 through 1,2
-//  let arr = [
-//     [0,0,0],
-//     [0,0,0],
-//     [0,0,0]
-//  ]
 
-// col, row
-// for(let i = x1; i <= x2; i++){
-//     for(let j = y1; j <= y2; j++){
-//         arr[i][j] = 1
-//     }
-// }
 let grid = new Array(1000).fill().map(() => Array(1000).fill(0))
 let res = 0;
 rl.on("line", (line) => {
