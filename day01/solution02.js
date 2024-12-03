@@ -24,12 +24,7 @@ rl.on("close", () => {
   g2.sort((a, b) => a - b);
 
   for (let i = 0; i < g1.length; i++) {
-    if (g2[i] > g1[i]) {
-      result += g2[i] - g1[i];
-    } else {
-      result += g1[i] - g2[i];
-    }
+    result += g1[i] * g2.filter((g) => g === g1[i]).length;
   }
-
   console.log(result);
 });
