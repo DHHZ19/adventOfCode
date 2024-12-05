@@ -28,7 +28,18 @@ rl.on("line", (line) => {
 function findRestOfWord(letters, i, j, sum, word) {
   if(i >= letters.length || j >= letters[0].length || j < 0 || i < 0) {
     return 0
-  } 
+  }
+
+  if(letters[i][j] === 'M' && word === 'X') { 
+    word += 'M'
+  } else if(letters[i][j] === 'A' && word === 'XM') {
+    word += 'A'
+  } else if (letters[i][j] === 'S' && word === 'XMA') {
+    word += 'S'
+    return sum
+  } else {
+    return 0
+  }
 
     //right
     sum += findRestOfWord(letters, i+1, j, sum, word)
@@ -47,14 +58,6 @@ function findRestOfWord(letters, i, j, sum, word) {
     // bottom
     sum += findRestOfWord(letters, i, j-1,sum, word)
 
-  if(letters[i][j] === 'M') { 
-    word += 'M'
-  } else if(letters[i][j] === 'A' && word === 'XM') {
-    word += 'A'
-  } else if (letters[i][j] === 'S' && word === 'XMA') {
-    word += 'S'
-    return sum
-  }
 
 } 
 
