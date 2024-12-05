@@ -17,9 +17,7 @@ rl.on("line", (line) => {
     for(let j = 0; j < letters[i].length; j++) {  
       console.log(letters[i])
       if(letters[i][j] === 'X'){
-        let sum = 0
-        let word = 'X'
-        result += findRestOfWord(letters, i, j, sum, word) 
+        result += findRestOfWord(letters, i, j, 0, 'X') 
       }
     }
   }
@@ -32,36 +30,31 @@ function findRestOfWord(letters, i, j, sum, word) {
     return 0
   } 
 
-  if(letters[i][j] !== 'M') {
-    return 0
-  }
+    //right
+    sum += findRestOfWord(letters, i+1, j, sum, word)
+    //left
+    sum += findRestOfWord(letters, i-1, j, sum, word)
+    // top right
+    sum += findRestOfWord(letters, i+1, j+1, sum, word) 
+    // top left
+    sum += findRestOfWord(letters, i+1, j-1, sum, word) 
+    // bottom left
+    sum += findRestOfWord(letters, i-1, j-1,sum, word) 
+    // bottom right
+    sum += findRestOfWord(letters, i-1, j+1,sum, word) 
+    // top
+    sum += findRestOfWord(letters, i, j+1,sum, word)
+    // bottom
+    sum += findRestOfWord(letters, i, j-1,sum, word)
 
   if(letters[i][j] === 'M') { 
     word += 'M'
-  }
-
-  if(letters[i][j] === 'A') { 
+  } else if(letters[i][j] === 'A' && word === 'XM') {
     word += 'A'
-  }
-
-  if(letters[i][j] === 'S') { 
+  } else if (letters[i][j] === 'S' && word === 'XMA') {
     word += 'S'
-  }
-
-  if(word === 'XMAS' ) {
     return sum
-  } else if(word.length > 1){
-    return 0
   }
-
-    sum += findRestOfWord(letters, i+1, j, sum, word)
-    sum += findRestOfWord(letters, i-1, j, sum, word)
-    sum += findRestOfWord(letters, i+1, j+1, sum, word) 
-    sum += findRestOfWord(letters, i+1, j-1, sum, word) 
-    sum += findRestOfWord(letters, i-1, j-1,sum, word) 
-    sum += findRestOfWord(letters, i-1, j+1,sum, word) 
-    sum += findRestOfWord(letters, i, j+1,sum, word)
-    sum += findRestOfWord(letters, i, j-1,sum, word)
 
 } 
 
